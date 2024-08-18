@@ -1,0 +1,17 @@
+.gallery-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-card {
+  display: flex;
+  list-style: none;
+  flex-basis: calc((100% - 48px) / 5);
+}
+
+.gallery-image {
+  width: 360px;
+  height: 200px;
+}
