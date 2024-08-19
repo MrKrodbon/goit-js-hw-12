@@ -7,11 +7,23 @@
 
 .gallery-card {
   display: flex;
+  flex-direction: row;
   list-style: none;
-  flex-basis: calc((100% - 48px) / 5);
+  gap: 5px;
+  flex-basis: calc((100% - 48px) / 4);
 }
 
 .gallery-image {
   width: 360px;
   height: 200px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-image-info {
+  display: flex;
+  flex-direction: row;
 }
