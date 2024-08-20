@@ -8,7 +8,6 @@ export const fetchPhotos = searchQuery => {
     orientation: 'horizontal',
     safesearch: true,
   });
-  console.log(urlParams.toString());
   return fetch(`${URL}?key=${USER_KEY}&${urlParams}`).then(response => {
     if (!response.ok) {
       throw new Error(response.status);

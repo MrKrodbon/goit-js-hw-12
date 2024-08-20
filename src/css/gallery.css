@@ -1,24 +1,32 @@
+html,
+body {
+  height: 100%;
+}
+
 .gallery-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
 }
 
 .gallery-card {
   display: flex;
   flex-direction: row;
   list-style: none;
-  gap: 5px;
   flex-basis: calc((100% - 48px) / 4);
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .gallery-image {
+  margin: 0x;
   width: 360px;
-  height: 200px;
+  height: 250px;
 }
-
-
 
 .image-container {
   display: flex;
@@ -42,4 +50,26 @@
 
 .gallery-value {
   text-align: center;
+}
+
+.loader:after {
+  position: absolute;
+  content: '';
+  background: orangered;
+  width: 32px;
+  height: 32px;
+  left: 50%;
+  top: 50%;
+  border-radius: 4px;
+  transform-origin: -16px -32px;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotate(-45deg) translate(-50%, -50%);
+  }
+  50% {
+    transform: rotate(-245deg) translate(-50%, -50%);
+  }
 }
