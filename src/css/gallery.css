@@ -18,12 +18,28 @@
   height: 200px;
 }
 
+
+
 .image-container {
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.gallery-image-info {
+.gallery-image-info-container {
   display: flex;
   flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.gallery-text {
+  font-weight: bold;
+}
+
+.gallery-value {
+  text-align: center;
 }
