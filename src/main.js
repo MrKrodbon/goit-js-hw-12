@@ -63,8 +63,8 @@ const onSearchFormSubmit = event => {
           message: 'Please check your internet connection and try again!',
           position: 'topRight',
         });
-        divLoader.classList.add('visually-hidden');
         searchFormEl.elements.user_query.value = '';
+        divLoader.classList.add('visually-hidden');
       });
   }
 };
