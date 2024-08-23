@@ -15,11 +15,11 @@ const createSimpleLightBox = () => {
 const lightBox = createSimpleLightBox();
 
 const onSearchFormSubmit = event => {
+  event.preventDefault();
   galleryListEl.innerHTML = '';
   const searchedValue = searchFormEl.elements.user_query.value;
 
   if (searchedValue === '') {
-    event.preventDefault();
     iziToast.error({
       title: 'Error',
       message: 'Please fill input field',
@@ -27,11 +27,12 @@ const onSearchFormSubmit = event => {
     });
     return;
   } else {
-    galleryListEl.insertAdjacentHTML(
-      'afterbegin',
-      `<div class="loader"></div>`
-    );
+    // galleryListEl.insertAdjacentHTML(
+    //   'afterbegin',
+    //   `<div class="loader"></div>`
+    // );
     let divLoader = document.querySelector('.loader');
+    divLoader.classList.remove('visually-hidden');
     fetchPhotos(searchedValue)
       .then(data => {
         if (data.hits.length === 0) {
@@ -43,6 +44,7 @@ const onSearchFormSubmit = event => {
           });
           galleryListEl.innerHTML = '';
           searchFormEl.reset();
+          divLoader.classList.add('visually-hidden');
           return;
         }
         divLoader.classList.add('visually-hidden');
@@ -50,14 +52,19 @@ const onSearchFormSubmit = event => {
           .map(image => crateGalleyCardTemplate(image))
           .join('');
         galleryListEl.insertAdjacentHTML('afterbegin', galleyCardTemplate);
+        searchFormEl.elements.user_query.value = '';
+
         lightBox.refresh();
       })
-      .catch(error => {
-        console.log(error.status);
+      .catch(() => {
+        iziToast.error({
+          title: 'Error',
+          message: 'Please check your internet connection and try again!',
+          position: 'topRight',
+        });
+        divLoader.classList.add('visually-hidden');
       });
   }
-
-  event.preventDefault();
 };
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);

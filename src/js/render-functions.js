@@ -1,5 +1,3 @@
-
-
 export const crateGalleyCardTemplate = imgInfo => {
   return `
     <li class = "gallery-card">
@@ -29,5 +27,3 @@ export const crateGalleyCardTemplate = imgInfo => {
     </li>
     `;
 };
-
-
