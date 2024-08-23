@@ -44,6 +44,7 @@ const onSearchFormSubmit = event => {
           });
           galleryListEl.innerHTML = '';
           searchFormEl.reset();
+          searchFormEl.elements.user_query.value = '';
           divLoader.classList.add('visually-hidden');
           return;
         }
@@ -63,6 +64,7 @@ const onSearchFormSubmit = event => {
           position: 'topRight',
         });
         divLoader.classList.add('visually-hidden');
+        searchFormEl.elements.user_query.value = '';
       });
   }
 };
