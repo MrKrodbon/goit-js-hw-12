@@ -1,15 +1,10 @@
-html,
-body {
-  height: 100%;
-}
-
 .gallery-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin: 0px;
+  margin: 20px;
   padding: 0px;
 }
 
@@ -25,7 +20,7 @@ body {
 .gallery-image {
   margin: 0x;
   width: 360px;
-  height: 250px;
+  height: 200px;
 }
 
 .image-container {
@@ -52,25 +47,88 @@ body {
   text-align: center;
 }
 
-.loader:after {
-  position: absolute;
-  content: '';
-  background: orangered;
-  width: 32px;
-  height: 32px;
-  left: 50%;
-  top: 50%;
-  border-radius: 4px;
-  transform-origin: -16px -32px;
-  animation: rotate 1s linear infinite;
+.load-more-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-@keyframes rotate {
-  0%,
-  100% {
-    transform: rotate(-45deg) translate(-50%, -50%);
+
+.loadMoreBtn {
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-width: 120px;
+  min-height: 40px;
+  background: #4e75ff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.loader-container {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  animation: paddles 0.75s ease-out infinite;
+}
+
+.loader {
+  content: '';
+  position: relative;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 40px;
+  width: 6px;
+  color: gray;
+  animation: paddles 0.75s ease-out infinite;
+}
+
+.loader:before {
+  content: '';
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #de3500;
+  border-radius: 50%;
+  animation: ballbounce 0.6s ease-out infinite;
+}
+
+@keyframes paddles {
+  0% {
+    box-shadow: -25px -10px, 25px 10px;
   }
   50% {
-    transform: rotate(-245deg) translate(-50%, -50%);
+    box-shadow: -25px 8px, 25px -10px;
+  }
+  100% {
+    box-shadow: -25px -10px, 25px 10px;
+  }
+}
+@keyframes ballbounce {
+  0% {
+    transform: translateX(-20px) scale(1, 1.2);
+  }
+  25% {
+    transform: scale(1.2, 1);
+  }
+  50% {
+    transform: translateX(15px) scale(1, 1.2);
+  }
+  75% {
+    transform: scale(1.2, 1);
+  }
+  100% {
+    transform: translateX(-20px);
   }
 }
 

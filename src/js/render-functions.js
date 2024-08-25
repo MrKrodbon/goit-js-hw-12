@@ -1,4 +1,4 @@
-export const crateGalleyCardTemplate = imgInfo => {
+export const crateGalleryCardTemplate = imgInfo => {
   return `
     <li class = "gallery-card">
       <div class="image-container">
