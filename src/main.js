@@ -109,12 +109,10 @@ const onLoadMoreBtn = async () => {
       _loadMoreBtn.classList.remove('visually-hidden');
 
       let boundingRect = firstImageElement.getBoundingClientRect();
-      console.log(boundingRect);
       window.scrollBy({
         top: boundingRect.top * boundingRect.y,
         behavior: 'smooth',
       });
-      console.log(boundingRect);
     }
   } catch (error) {
     iziToast.error({
