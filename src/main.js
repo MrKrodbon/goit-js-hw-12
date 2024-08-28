@@ -90,8 +90,6 @@ const onLoadMoreBtn = async () => {
     let responseTotalHits = response.data.totalHits;
     let totalPages = Math.ceil(responseTotalHits / responseHitsArray.length);
 
-    console.log(totalPages);
-    console.log(_currentPage);
     if (_currentPage >= totalPages) {
       iziToast.info({
         title: 'info',
