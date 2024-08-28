@@ -29,10 +29,11 @@ const renderPhotos = async event => {
   event.preventDefault();
 
   _galleryListEl.innerHTML = '';
-  searchedValue = _searchFormEl.elements.user_query.value;
+  searchedValue = _searchFormEl.elements.user_query.value.trim();
 
   try {
     _mainLoader.classList.remove('visually-hidden');
+    _loadMoreBtn.classList.add('visually-hidden');
     const response = await getPhotos(searchedValue, _currentPage);
     _searchFormEl.reset();
     _mainLoader.classList.add('visually-hidden');
@@ -52,6 +53,7 @@ const renderPhotos = async event => {
           'Sorry,there are no images matching your search query. Please try again!',
         position: 'topRight',
       });
+      _loadMoreBtn.classList.add('visually-hidden');
       _galleryListEl.innerHTML = '';
       _searchFormEl.reset();
       return;
