@@ -79,7 +79,6 @@ const renderPhotos = async event => {
 
 const onLoadMoreBtn = async () => {
   currentPage++;
-  console.log(currentPage);
 
   try {
     loadMoreBtn.classList.add('visually-hidden');
