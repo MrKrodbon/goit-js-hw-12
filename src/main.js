@@ -29,7 +29,7 @@ const lightBox = createSimpleLightBox();
 
 const renderPhotos = async event => {
   event.preventDefault();
-
+  currentPage = 1;
   galleryListEl.innerHTML = '';
   searchedValue = searchFormEl.elements.user_query.value.trim();
 
