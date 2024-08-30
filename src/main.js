@@ -44,6 +44,7 @@ const renderPhotos = async event => {
     return;
   } else {
     try {
+      currentPage = 1;
       mainLoader.classList.remove('visually-hidden');
       loadMoreBtn.classList.add('visually-hidden');
       const response = await getPhotos(searchedValue, currentPage);
