@@ -114,7 +114,6 @@ const onLoadMoreBtn = async () => {
     galleryListEl.insertAdjacentHTML('beforeend', galleryCardTemplate);
 
     makeScroll();
-    lightBox.refresh();
   } catch (error) {
     iziToast.error({
       title: 'Error',
