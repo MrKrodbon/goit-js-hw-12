@@ -32,7 +32,6 @@ const renderPhotos = async event => {
 
   galleryListEl.innerHTML = '';
   searchedValue = searchFormEl.elements.user_query.value.trim();
-  currentPage = 1;
 
   if (searchedValue === '') {
     iziToast.error({
@@ -40,6 +39,8 @@ const renderPhotos = async event => {
       message: 'Please fill input field',
       position: 'topRight',
     });
+    mainLoader.classList.add('visually-hidden');
+    loadMoreBtn.classList.add('visually-hidden');
     return;
   } else {
     try {
@@ -98,7 +99,8 @@ const onLoadMoreBtn = async () => {
     loadMoreWrapperLoader.classList.add('visually-hidden');
     responseHitsArray = response.data.hits;
     totalHits = response.data.totalHits;
-    if (currentPage * 15 >= totalHits) {
+    let loadedPhotosCount = currentPage * 15;
+    if (loadedPhotosCount >= totalHits) {
       iziToast.info({
         title: 'info',
         message: "We're sorry, but you've reached the end of search results.",
@@ -106,6 +108,7 @@ const onLoadMoreBtn = async () => {
       });
       loadMoreWrapperLoader.classList.add('visually-hidden');
       loadMoreBtn.classList.add('visually-hidden');
+      currentPage = 1;
     }
 
     const galleryCardTemplate = responseHitsArray
@@ -122,14 +125,17 @@ const onLoadMoreBtn = async () => {
       position: 'topRight',
     });
     searchFormEl.elements.user_query.value = '';
+    currentPage = 1;
     loadMoreWrapperLoader.classList.add('visually-hidden');
     loadMoreBtn.classList.remove('visually-hidden');
   }
 };
 
 function makeScroll() {
-  const firstImageElement = document.querySelector('.gallery-list li');
-  let boundingRect = firstImageElement.getBoundingClientRect();
+  const boundingRect = document
+    .querySelector('.gallery-list li')
+    .getBoundingClientRect();
+
   window.scrollBy({
     top: boundingRect.height * 2,
     behavior: 'smooth',
